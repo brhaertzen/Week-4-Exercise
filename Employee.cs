@@ -7,7 +7,7 @@ namespace Week_4_Exercise
 		//Made these public so we could retrieve their title for our second working method
 		public string firstName;
 		public string lastName;
-		public string fullName;
+		public string fullName => firstName + " " + lastName;
 		public string startDate;
 		public string title;
 		public string salary;
@@ -16,7 +16,6 @@ namespace Week_4_Exercise
 		{
 			firstName = _firstName;
 			lastName = _lastName;
-			fullName = firstName + " " + lastName;
 			startDate = _startDate;
 			title = _title;
 			salary = _salary;
