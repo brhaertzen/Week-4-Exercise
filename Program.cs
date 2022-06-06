@@ -9,29 +9,23 @@ namespace Week_4_Exercise
 		{
 			List<Employee> employees = new List<Employee>();
 
-			Employee phillip = new Employee("Phillip", "Smith", "January 1st", "Water Boy", "$35,000");
-			employees.Add(phillip);
-
-			Employee ashley = new Employee("Ashley", "Johnson", "March 2nd", "CEO", "$150,000");
-			employees.Add(ashley);
-
-			Employee daniel = new Employee("Daniel", "Davis", "April 3rd", "Digital Artist", "$75,000");
-			employees.Add(daniel);
-
-			Employee sarah = new Employee("Sarah", "Taylor", "May 4th", "Accountant", "$90,000");
-			employees.Add(sarah);
-
-			Employee nicholas = new Employee("Nicholas", "Taylor", "June 5th", "Architect", "$110,000");
-			employees.Add(nicholas);
+			employees.Add(new Employee("Phillip", "Smith", new DateTime(2018, 1, 2), "Water Boy", 35000f));
+			employees.Add(new Employee("Ashley", "Johnson", new DateTime(2021, 12, 30), "CEO", 150000f));
+			employees.Add(new Employee("Daniel", "Davis", new DateTime(2021, 5, 6), "Digital Artist", 75000f));
+			employees.Add(new Employee("Sarah", "Taylor", new DateTime(2019, 11, 8), "Accountant", 90000f));
+			employees.Add(new Employee("Nicholas", "Taylor", new DateTime(2022, 1, 1), "Architect", 110000f));
 
 			Console.WriteLine();
+
 			foreach (Employee employee in employees)
 			{
-				employee.DeclareName();
-				employee.Working();
-				employee.Working("being the best " + employee.title + " in the world.");
+				employee.ShowFullName();
 				employee.ShowTitle();
+				employee.Working($"being the best {employee.title} in the world.");				
 				employee.ShowSalary();
+				employee.ShowBonus();
+				employee.BonusElligible();
+
 				Console.WriteLine();
 			}
 		}

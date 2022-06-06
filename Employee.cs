@@ -2,32 +2,25 @@
 
 namespace Week_4_Exercise
 {
-	class Employee
+	class Employee: Person
 	{
-		//Made these public so we could retrieve their title for our second working method
-		public string firstName;
-		public string lastName;
-		public string fullName => firstName + " " + lastName;
-		public string startDate;
-		public string title;
-		public string salary;
+		public DateTime startDate { get; set; }
+		public string title { get; set; }
+		public float salary { get; set; }
+		private float bonusPay => salary * 0.25f;
 		
-		public Employee(string _firstName, string _lastName, string _startDate, string _title, string _salary)
+		public Employee(string firstName, string lastName, DateTime startDate, string title, float salary)
 		{
-			firstName = _firstName;
-			lastName = _lastName;
-			startDate = _startDate;
-			title = _title;
-			salary = _salary;
+			//Person property
+			this.firstName = firstName;
+			this.lastName = lastName;
+
+			this.startDate = startDate;
+			this.title = title;
+			this.salary = salary;
 
 			//Lets us know it was properly created
-			Console.WriteLine(fullName + " was created.");
-		}
-
-		//So we would know who is telling their info
-		public void DeclareName()
-		{
-			Console.WriteLine("My name is " + fullName + ".");
+			Console.WriteLine($"{FullName()} was created");
 		}
 
 		public void Working()
@@ -37,17 +30,41 @@ namespace Week_4_Exercise
 
 		public void Working(string project)
 		{
-			Console.WriteLine("I am working on " + project);
+			Console.WriteLine($"I am working on {project}");
 		}
 
 		public void ShowTitle()
 		{
-			Console.WriteLine("My title is " + title + ".");
+			Console.WriteLine($"My title is {title}.");
 		}
 
 		public void ShowSalary()
 		{
-			Console.WriteLine("I have been working here since " + startDate + " and make " + salary + ".");
+			Console.WriteLine($"I have been working here since {startDate} and make ${salary}.");
+		}
+
+		public void ShowBonus()
+		{
+			if (Bonus())
+				Console.WriteLine("We are eligible for a bonus!");
+			else
+				Console.WriteLine("We are NOT eligible for a bonus.");
+		}
+
+		public void BonusElligible()
+		{
+			if (Bonus())
+				Console.WriteLine($"My bonus pay this year will be {bonusPay}!");
+		}
+
+		private bool Bonus()
+		{
+			DateTime currentDate = DateTime.Now;
+
+			if (startDate.AddDays(180) < currentDate)			
+				return true;					
+
+			return false;
 		}
 	}
 }
